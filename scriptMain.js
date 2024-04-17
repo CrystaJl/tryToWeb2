@@ -13,7 +13,11 @@ setInterval(refreshTime, 1000);
 
 function contacts(){
   window.location.href = 'contacts.html';
-  return false;
+
+}
+function journal(){
+  window.location.href = 'journal.html';
+
 }
 
 function specifications(){
