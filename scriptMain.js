@@ -3,7 +3,7 @@ var timeDisplay = document.getElementById("time");
 
 function refreshTime() {
   var dateString = new Date().toLocaleString("ru", {timeZone: "Europe/Moscow"});
-  var formattedString = dateString.replace(", ", " - ");
+  var formattedString = dateString.replace(", ", "/");
   timeDisplay.innerHTML = formattedString;
 }
 
@@ -12,6 +12,38 @@ setInterval(refreshTime, 1000);
 
 
 function contacts(){
-    window.location.href = 'contacts.html';
-    return false;
+  window.location.href = 'contacts.html';
+  return false;
 }
+
+function specifications(){
+  getSpecifications = document.getElementById('specifications')
+  getSpecifications.innerHTML = navigator.platform;
+}
+specifications()
+
+function getDateFunc(){
+  var currentDate = new Date();
+  var day = currentDate.getDate(); 
+  var month = currentDate.getMonth() + 1; 
+  var year = currentDate.getFullYear(); 
+
+  var getDate = document.getElementById('getDate');
+  getDate.innerHTML = day + '/' + month + '/' + year;
+}
+getDateFunc();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
