@@ -3,20 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Система управления</title>
+    
 </head>
 <body>
-    <header>
+    <div class="buttons">
+        <button onclick="showWindow('Планировщик')">Планировщик установок</button>
+        <button onclick="showWindow('Мониторинг')">Мониторинг</button>
+        <button onclick="showWindow('Журнал')">Журнал</button>
+        <button onclick="showWindow('Настройки')">Настройки станции</button>
+        <button onclick="showWindow('Инженерное')">Инженерное меню</button>
+        <button onclick="showWindow('Настройки')">Настройки панели</button>
+        <button onclick="showKeypadModal()">Контакты</button>
+    </div>
 
-    </header>
-    <!---->
-    <main>
-        
-    </main>
-    <!---->
-    <footer>
-        
-        
-    </footer>
+    
+
+    
+    <style>
+        .buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* изменено */
+    align-items: flex-start; /* изменено */
+    margin-top: 20px;
+}
+
+.buttons > button {
+    width: fit-content; 
+    margin-bottom: 10px; 
+    width: 150px; /* изменено */
+    height: 40px; /* изменено */
+    font-size: 14px; /* изменено */
+    margin-bottom: 20px; /* увеличен отступ */
+
+}
+
+    </style>
 </body>
 </html>
