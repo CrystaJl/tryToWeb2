@@ -1,20 +1,6 @@
 
 var textBox = document.getElementById('textbox')
 
-function showWindow(windowName) {
-    alert(`Открыто окно: ${windowName}`);
-}
-
-function showKeypadModal() {
-    document.getElementById('keypadModal').style.display = 'block';
-}
-
-function hideKeypadModal() {
-    document.getElementById('keypadModal').style.display = 'none';
-}
-
-
-
 
 function addNumber(number) {
     if (number === ',' && (textBox.value.indexOf(',') === -1 && textBox.value !== '')) {

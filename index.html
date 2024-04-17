@@ -7,6 +7,9 @@
     
 </head>
 <body>
+    <div class = "time">
+        <p id="time">...</p>
+    </div>
     <div class="buttons">
         <button onclick="showWindow('Планировщик')">Планировщик установок</button>
         <button onclick="showWindow('Мониторинг')">Мониторинг</button>
@@ -14,12 +17,12 @@
         <button onclick="showWindow('Настройки')">Настройки станции</button>
         <button onclick="showWindow('Инженерное')">Инженерное меню</button>
         <button onclick="showWindow('Настройки')">Настройки панели</button>
-        <button onclick="showKeypadModal()">Контакты</button>
+        <button onclick="contacts()">Контакты</button>
     </div>
 
     
 
-    
+    <script src="scriptMain.js"></script>
     <style>
         .buttons {
     display: flex;
