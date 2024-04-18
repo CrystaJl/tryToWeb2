@@ -15,3 +15,8 @@ function contacts(){
     window.location.href = 'contacts.html';
     return false;
 }
+
+function planner(){
+  window.location.href = 'planner.html';
+  return false;
+}
