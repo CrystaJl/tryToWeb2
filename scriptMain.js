@@ -25,6 +25,17 @@ function monitoring(){
 function engineeringMenu(){
   window.location.href = 'engineeringMenu.html';
 }
+function installationScheduler(){
+  window.location.href = 'installationScheduler.html'
+}
+
+function stationSettings(){
+  window.location.href = 'stationSettings.html'
+}
+
+function panelSettings(){
+  window.location.href = 'panelSettings.html'
+}
 
 function specifications(){
   getSpecifications = document.getElementById('specifications')
