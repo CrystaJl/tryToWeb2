@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="main">
+        <div class = "time">
+            <p id="time">...</p>
+        </div>
+        <button onclick="back()">Назад</button>
+        <div class="window">
+            <div class="left-content">
+                <div class="eye-before">Показание датчика на всасывании</div>
+                <div class="eye-before">Показания датчика на нагнетение</div>
+                <div class="eye-before">Показание датчика на всасывании</div>
+                <div class="eye-before">Показания датчика на нагнетание</div>
+                <div class="underline-after"></div>
+    
+                <div class="eye-before">Количество ошибок связи ПЧ</div>
+                <div class="eye-before">Количество ошибок связи PLC</div>
+                <div class="eye-before">Число подключений</div>
+                <div class="underline-after"></div>
+    
+                <div class="eye-before with-spacing">Дискретные входы PLC</div>
+    
+                <div class="container">
+                  <button>99</button>
+                  <button>99</button>
+                  <button>99</button>
+                  <button>99</button>
+                  <button>99</button>
+                  <button>99</button>
+                  <button>99</button>
+                  <button>99</button>
+                </div>
+    
+                <div class="container">
+                  <button>99</button>
+                  <button>99</button>
+                  <button>99</button>
+                  <button>99</button>
+                  <button>99</button>
+                  <button>99</button>
+                  <button>99</button>
+                  <button>99</button>
+                </div> 
+                
+                <div class="eye-before with-spacing">Дискретные входы PLC</div>
+    
+                <div class="container">
+                  <button>99</button>
+                  <button>99</button>
+                  <button>99</button>
+                  <button>99</button>
+                  <button>99</button>
+                  <button>99</button>
+                  <button>99</button>
+                  <button>99</button>
+                </div> 
+    
+                <div class="container">
+                  <button>99</button>
+                  <button>99</button>
+                  <button>99</button>
+                  <button>99</button>
+                  <button>99</button>
+                  <button>99</button>
+                  <button>99</button>
+                  <button>99</button>
+                
+                </div> 
+              
+            </div>
+            
+                <div class="left-content">
+                </div>
+                <div class="input-wrapper">
+                    <input type="text" id="myInput1" placeholder="####" onclick="showKeypadModal()">
+                    <input type="text" id="myInput3" placeholder="####">
+                    <input type="text" id="myInput3" placeholder="####">
+                </div>
+            </div>
+            
+            
+        </div>
+        <div class="keypad-modal" id="keypadModal">
+            <div class="keypad-content">
+                <input type="text" size="40" id="textbox" disabled="disabled">
+                <div class="keypad">
+                    <button onclick="addNumber(7)">7</button>
+                    <button onclick="addNumber(8)">8</button>
+                    <button onclick="addNumber(9)">9</button>
+                    <button onclick="clearInput()">C</button>
+                    <button onclick="addNumber(4)">4</button>
+                    <button onclick="addNumber(5)">5</button>
+                    <button onclick="addNumber(6)">6</button>
+                    <button onclick="deleteNumber()">&#8592</button>
+                    <button onclick="addNumber(1)">1</button>
+                    <button onclick="addNumber(2)">2</button>
+                    <button onclick="addNumber(3)">3</button>
+                    <button onclick="closeKeypad()">esc</button>
+                    <button onclick="addNumber(',')">,</button>
+                    <button onclick="addNumber(0)">0</button>
+                    <button onclick="submitInput()">Enter</button>
+                    
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+
+    <script src="scriptMain.js"></script>
+    <script src="scriptKeypad.js"></script>
+    <script>
+
+        function back(){
+            window.location.href = 'monitoring.html';
+        }
+
+    </script>
+        <style>
+            .main {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start; 
+                align-items: flex-start; 
+                margin-top: 20px;
+            }
+            .main > button {
+                width: fit-content; 
+                margin-bottom: 10px; 
+                width: 150px; 
+                height: 40px; 
+                font-size: 14px; 
+                margin-bottom: 20px; 
+        
+            }
+
+
+
+
+            
+    body {
+        display: flex;
+        justify-content: left;
+        align-items: left;
+        height: 100vh;
+    }
+    
+    .window {
+        width: 640px; 
+        height: 400px; 
+        background-color: black; 
+        border-radius: 10px; 
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        display: flex;
+    }
+    
+    .left-content {
+        padding-left: 20px; 
+    }
+    .left-content {
+    padding-left: 20px; 
+    color: white; 
+    }
+    .eye-before::before {
+    content: "\1F441"; 
+    display: inline-block;
+    font-size: 20px; 
+    margin-right: 5px; 
+    }
+    .underline-after {
+    position: relative; 
+    }
+
+    .underline-after::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px; 
+    width: 225%; 
+    border-bottom: 1px solid white;
+}
+
+    .line {
+        width: 100%;
+        height: 1px;
+        background-color: white; 
+        margin-top: 20px; 
+        margin-bottom: 20px; 
+    }
+    .eye-before.with-spacing::before {
+    content: "";
+    display: block;
+    height: 20px; 
+    }
+
+.eye-before.with-spacing::after {
+    content: "";
+    display: block;
+    height: 20px; 
+}
+    .eye-before.with-spacing::before {
+    content: "\1F441"; 
+    display: inline-block;
+    font-size: 20px; 
+    margin-right: 5px; 
+}
+.input-with-eye {
+    display: flex;
+    align-items: center;
+}
+
+.eye-before.with-spacing::before {
+    content: "👁"; 
+    margin-right: 5px; 
+}
+
+.eye-before.with-spacing::after {
+    content: "";
+    display: block;
+    height: 20px; 
+}
+.input-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 20px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+    height: 300px; 
+}
+
+.input-wrapper input {
+  margin-left: 200px; 
+}
+
+#myInput1, #myInput2, #myInput3 {
+    padding: 5px; 
+    background-color: rgb(0, 0, 0);
+    border: 1px solid rgb(255, 255, 255);
+    width: 100px; 
+    height: 7px;
+    color: white;
+}
+
+#myInput1::placeholder {
+  text-align: center; 
+}
+#myInput2::placeholder {
+  text-align: center; 
+}
+#myInput3::placeholder {
+  text-align: center; 
+}
+
+#myInput2 {
+    margin-left: 0px; 
+}
+
+.input-wrapper > * {
+  margin-bottom: 10px; 
+}
+
+.input-wrapper > *:last-child {
+  margin-bottom: 0; 
+}
+.button {
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  border: none;
+  cursor: pointer;      
+}
+
+.container {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: -320px;
+  position: relative;
+  top: -40px; 
+  
+}
+
+
+
+
+.keypad-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.keypad-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+   
+}
+
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-gap: 5px;
+    justify-content: center;
+    align-items: center;
+}
+
+.keypad > button {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input[type="text"] {
+    width: 200px;
+    height: 20px;
+    margin: 2%;
+}
+            </style>
+</body>
+</html>

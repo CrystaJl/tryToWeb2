@@ -2,6 +2,15 @@
 var textBox = document.getElementById('textbox')
 
 
+function showKeypadModal() {
+    document.getElementById('keypadModal').style.display = 'block';
+}
+
+
+
+
+
+
 function addNumber(number) {
     if (number === ',' && (textBox.value.indexOf(',') === -1 && textBox.value !== '')) {
         textBox.value += number;
