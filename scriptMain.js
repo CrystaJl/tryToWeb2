@@ -54,6 +54,15 @@ function getDateFunc(){
 }
 getDateFunc();
 
+// можно это пофиксить пж
+// function getDayFunc(){
+//   var currentDate = new Date();
+//   var day = currentDate.getDay(); 
+
+//   var getDate = document.getElementById('getDay');
+// }
+// getDateFunc();
+
 
 
 
