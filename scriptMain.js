@@ -19,6 +19,12 @@ function journal(){
   window.location.href = 'journal.html';
 
 }
+function monitoring(){
+  window.location.href = 'monitoring.html';
+}
+function engineeringMenu(){
+  window.location.href = 'engineeringMenu.html';
+}
 
 function specifications(){
   getSpecifications = document.getElementById('specifications')
