@@ -1,13 +1,30 @@
 
 var textBox = document.getElementById('textbox')
-
+var checkBox;
 
 function showKeypadModal() {
+    checkBox = document.activeElement;
     document.getElementById('keypadModal').style.display = 'block';
 }
 
 
+function checkPassword(){
+    var timeToTurnOffDisplay = document.getElementById('timeToTurnOffDisplay');
 
+
+    if (checkBox === document.getElementById("timeToTurnOffDisplay")) {
+        if(textBox.value == '1234'){
+            timeToTurnOffDisplay.placeholder = '12:30';
+        }
+    };
+
+    if (checkBox === document.getElementById("timeToTurnOnWall")) {
+        if(textBox.value == '1235'){
+            timeToTurnOnWall.placeholder = '12:35';
+        }
+    }
+
+}
 
 
 
@@ -33,6 +50,8 @@ function deleteNumber(){
 }
 
 function submitInput() {
+    checkPassword()
     clearInput();
     document.getElementById('keypadModal').style.display = 'none';
 }
+
