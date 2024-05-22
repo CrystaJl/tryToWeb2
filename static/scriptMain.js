@@ -9,15 +9,17 @@ function refreshTime() {
 
 setInterval(refreshTime, 1000);
 
-
-
+function mainPage(){
+  window.location.href = 'mainPage.html';
+}
+function index(){
+  window.location.href = 'index.html';
+}
 function contacts(){
   window.location.href = 'contacts.html';
-
 }
 function journal(){
   window.location.href = 'journal.html';
-
 }
 function monitoring(){
   window.location.href = 'monitoring.html';
@@ -28,15 +30,12 @@ function engineeringMenu(){
 function installationScheduler(){
   window.location.href = 'installationScheduler.html'
 }
-
 function stationSettings(){
   window.location.href = 'stationSettings.html'
 }
-
 function panelSettings(){
   window.location.href = 'panelSettings.html'
 }
-
 function specifications(){
   getSpecifications = document.getElementById('specifications')
   getSpecifications.innerHTML = navigator.platform;
