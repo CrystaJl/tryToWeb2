@@ -3,6 +3,8 @@ from flask_ngrok import run_with_ngrok
 import os
 import webbrowser
 
+
+
 app = Flask(__name__, template_folder='../windows', static_folder='../static')
 run_with_ngrok(app)
 
