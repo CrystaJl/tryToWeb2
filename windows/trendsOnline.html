@@ -3,55 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Планировщик установок</title>
+    <title>Тренды онлайн</title>
 </head>
 <body>
     <div class = "time">
         <p id="time">...</p>
-    </div>
-    <div class="main">
-        <button onclick="backMenu()">Назад</button>
-
-    </div>
-    <div>
-        Источник уставки
-    </div>
-    <hr>
-    <div>
-        Уставка пользователя
-    <div class="container">
-        <button onclick="showKeypadModal()">##.## (Бар)</button>
-    </div>
-    <hr>
-    <div>
-        Настройки дней недели
-    </div>
-    <div class="container">
-        <button>ПН</button>
-        <button>ВТ</button>
-        <button>СР</button>
-        <button>ЧТ</button>
-        <button>ПТ</button>
-        <button>СБ</button>
-        <button>ВС</button>
-      </div>
-    <hr>
-    <div>
-        <small>Планировщик</small><br>
-
-    <div class="container">
-        Время перехода: | Будни | Выходные | Уставка: Будни | Выходные<br>
-    <div style="margin-left:60px">  &nbsp;  &nbsp; &nbsp; Утро <button>##:##</button> &nbsp; &nbsp; <button>##:##</button> &nbsp; &nbsp; &nbsp; <button>##:## (Бар)</button> &nbsp; &nbsp; &nbsp; &nbsp; <button>##:## (Бар)</button></div>
-    <div style="margin-left:60px">  &nbsp;  &nbsp; &nbsp; День <button>##:##</button> &nbsp; &nbsp; <button>##:##</button> &nbsp; &nbsp; &nbsp; <button>##:## (Бар)</button> &nbsp; &nbsp; &nbsp; &nbsp; <button>##:## (Бар)</button></div>
-    <div style="margin-left:60px">  &nbsp; &nbsp; Вечер <button>##:##</button> &nbsp; &nbsp; <button>##:##</button> &nbsp; &nbsp; &nbsp; <button>##:## (Бар)</button> &nbsp; &nbsp; &nbsp; &nbsp; <button>##:## (Бар)</button></div>
-    <div style="margin-left:60px">  &nbsp;  &nbsp; &nbsp; Ночь <button>##:##</button> &nbsp; &nbsp; <button>##:##</button> &nbsp; &nbsp; &nbsp; <button>##:## (Бар)</button> &nbsp; &nbsp; &nbsp; &nbsp; <button>##:## (Бар)</button></div>
-    </div>
-    <hr>
-    <!-- <p id="getDay"></p> -->
-    <div>Текущий день <!-- Здесь добавить функцию, которая под комментом в scriptMain.js --> | Тип дня | Останов </div><br>
-    <div>Тип уставки | Ночь | Текущая уставка | ##.## | Бар </div>
-
-
+    
     <div class="keypad-modal" id="keypadModal">
         <div class="keypad-content">
             <input type="text" size="40" id="textbox" disabled="disabled">
@@ -75,16 +32,17 @@
             </div>
         </div>
     </div>
-    <script src="scriptKeypad.js"></script>
-    <script src="scriptMain.js"></script>
+
+    <script src="{{ url_for('static',filename='scriptMain.js') }}"></script>
+    <script src="{{ url_for('static',filename='scriptKeypad.js') }}"></script>
     <script>
 
         function backMenu(){
-            window.location.href = 'index.html';
+            window.location.href = 'monitoring.html';
         }
 
     </script>
-        <style>
+    <style>
     .main {
         display: flex;
         flex-direction: column;
@@ -155,5 +113,28 @@ input[type="text"] {
     margin: 2%;
 }
     </style>
+
+    <div class="main">
+    <button onclick="backMenu()">Назад</button>
+    </div>
+    <hr>
+
+    <div class="container">
+        1 минут | 3 минут | 10 минут | 30 минут |<br>
+    </div>
+    <hr>
+    <div class="blankimage">
+        <img src="data:," alt>
+        <p>/////</p>
+    </div>
+    <hr>
+    <div class="slider"> <!-- Пролистывание графика в виде слайдера вместо кнопок. Как мне показалось, так удобнее -->
+        <input type="range" min="0" max="200" value="100"> 
+    </div>
+    
+    <div class="1row">
+        <input type="text" placeholder="Уставка | ##.## Бар" onclick="showKeypadModal()"> | <input type="text" placeholder="ДД на входе | ##.## Бар" onclick="showKeypadModal()"> | <input type="text" placeholder="ДД на выходе | ##.## Бар" onclick="showKeypadModal()"> <input type="text" placeholder="Частота | ##.# Гц" onclick="showKeypadModal()"> | <input type="text" placeholder="Частота задание | ##.# Гц" onclick="showKeypadModal()"> | <input type="text" placeholder="Частота факт. | ##.# Гц" onclick="showKeypadModal()">
+    </div>
+        
 </body>
 </html>

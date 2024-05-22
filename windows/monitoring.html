@@ -23,18 +23,19 @@
 
     <script>
         function backMenu(){
-            window.location.href = 'index.html';
+            window.location.href = '{{ url_for("index") }}';
         }
 
         function pumps(){
-            window.location.href = 'pumps.html';
+            window.location.href = '{{ url_for("pumps") }}';
         }
 
         function trendsOnline(){
-            window.location.href = 'trendsOnline.html'
+            window.location.href = '{{ url_for("trendsOnline") }}'
         }
     </script>
-    <script src="scriptMain.js"></script>
+        <script src="{{ url_for('static',filename='scriptMain.js') }}"></script>
+
     <style>
     .main {
         display: flex;

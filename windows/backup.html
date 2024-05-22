@@ -47,10 +47,10 @@
         </div>
     </div>
 
-    <script src="scriptMain.js"></script>
+    <script src="{{ url_for('static',filename='scriptMain.js') }}"></script>
     <script>
         function back(){
-            window.location.href = 'engineeringMenu.html';
+            window.location.href = '{{ url_for("engineeringMenu") }}';
         }
     </script>
         <style>

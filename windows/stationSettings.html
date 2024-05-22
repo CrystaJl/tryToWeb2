@@ -17,10 +17,10 @@
 
 
 
-    <script src="scriptMain.js"></script>
+    <script src="{{ url_for('static',filename='scriptMain.js') }}"></script>
     <script>
         function backMenu(){
-            window.location.href = 'index.html';
+            window.location.href = '{{ url_for("index") }}';
         }
     </script>
         <style>

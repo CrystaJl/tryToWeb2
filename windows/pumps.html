@@ -113,12 +113,12 @@
     </div>
     
 
-    <script src="scriptMain.js"></script>
-    <script src="scriptKeypad.js"></script>
+    <script src="{{ url_for('static',filename='scriptMain.js') }}"></script>
+    <script src="{{ url_for('static',filename='scriptKeypad.js') }}"></script>
     <script>
 
         function back(){
-            window.location.href = 'monitoring.html';
+            window.location.href = '{{ url_for("monitoring") }}';
         }
 
     </script>
