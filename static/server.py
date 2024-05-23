@@ -2,7 +2,7 @@ from flask import Flask, render_template, send_from_directory, redirect, request
 from flask_ngrok import run_with_ngrok
 import os
 import webbrowser
-
+import dataRandomizer
 
 
 app = Flask(__name__, template_folder='../windows', static_folder='../static')
@@ -76,7 +76,13 @@ def scriptMain(filename):
     root_dir = os.path.dirname(os.path.abspath(__file__))
     return send_from_directory(os.path.join(root_dir, 'static'), filename)
 
+@app.route('/dataRandomizer.py')
+def randomizer(filename):
+    root_dir = os.path.dirname(os.path.abspath(__file__))
+    return send_from_directory(os.path.join(root_dir, 'static'), filename)
 
+# рандомайзер графика
+os.system("python dataRandomizer.py")
 
 if __name__ == "__main__":
     webbrowser.open_new('http://127.0.0.1:5000/')

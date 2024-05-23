@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Тренды онлайн</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    
 </head>
 <body>
     <div class = "time">
@@ -40,6 +42,8 @@
         function backMenu(){
             window.location.href = 'monitoring.html';
         }
+
+
 
     </script>
     <style>
@@ -117,24 +121,74 @@ input[type="text"] {
     <div class="main">
     <button onclick="backMenu()">Назад</button>
     </div>
-    <hr>
-
-    <div class="container">
+    <!-- <div class="container">
         1 минут | 3 минут | 10 минут | 30 минут |<br>
-    </div>
-    <hr>
-    <div class="blankimage">
-        <img src="data:," alt> <!-- Сюда вставить график -->
-        <p>/////</p>
-    </div>
+    </div> -->
+
+    <div style="width: 650px;height: 25%;"><canvas id="myChart"></canvas></div>
+
+    <script>
+        fetch('static/data.json')
+        .then(response => response.json())
+        .then(data => {
+            // Use data to create chart
+            const labels = data[0].values.map((_, index) => `Label ${index + 1}`);
+            const datasets = data.map(item => ({
+                data: item.values,
+                label: item.label,
+                backgroundColor: item.color,
+            }));
+    
+            new Chart(document.getElementById('myChart'), {
+                type: 'line',
+                data: {
+                    labels,
+                    datasets,
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                },
+            });
+        });
+    </script>
+<script>
+
+// const xValues = [100,200,300,400,500,600,700,800,900,1000];
+
+// new Chart("myChart", {
+//   type: "line",
+//   data: {
+//     labels: xValues,
+//     datasets: [{ 
+//       data: [86,114,106,106,107,111,133,221,783,247],
+//       borderColor: "red",
+//       fill: false
+//     }, { 
+//       data: [160,170,170,190,200,270,400,500,600,700],
+//       borderColor: "green",
+//       fill: false
+//     }, { 
+//       data: [30,70,200,500,600,400,200,100,20,10],
+//       borderColor: "blue",
+//       fill: false
+//     }]
+//   },
+//   options: {
+//     legend: {display: false}, maintainAspectRatio: false
+//   }
+// });
+</script>
+
+
+
     <hr>
     <div class="slider"> <!-- Пролистывание графика в виде слайдера вместо кнопок. Как мне показалось, так удобнее -->
-        <input type="range" min="0" max="200" value="100"> 
+        <input type="range" min="0" max="200" value="100" step="20"> 
     </div>
     
     <div class="1row">
         <input type="text" placeholder="Уставка | ##.## Бар" onclick="showKeypadModal()"> | <input type="text" placeholder="ДД на входе | ##.## Бар" onclick="showKeypadModal()"> | <input type="text" placeholder="ДД на выходе | ##.## Бар" onclick="showKeypadModal()"> <input type="text" placeholder="Частота | ##.# Гц" onclick="showKeypadModal()"> | <input type="text" placeholder="Частота задание | ##.# Гц" onclick="showKeypadModal()"> | <input type="text" placeholder="Частота факт. | ##.# Гц" onclick="showKeypadModal()">
     </div>
-        
 </body>
 </html>
