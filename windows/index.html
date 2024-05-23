@@ -18,40 +18,8 @@
         <button onclick="resetUser()">Reset User</button>
     </div>
 
-<hr>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<div class="main">
-    <div class="text">
-        <p style="color:green;">Выход:</p>
-        <button onclick="showKeypadModal()">##.## (Бар)</button>
-    </div>
-    <div class="text">
-        <p style="color:red;">Задание:</p>
-
-        <button onclick="showKeypadModal()">##.## (Бар)</button>
-    </div>
-    <div class="text">
-        <p style="color:gray;">Δ:</p>
-
-        <button onclick="showKeypadModal()">###.## (Бар)</button>
-    </div>
-    <div class="text">
-        <p style="color:gray;">Частота:</p>
-
-        <button onclick="showKeypadModal()">##.# (Гц)</button>
-    </div>
-    <div class="text">
-        <p style="color:blue;">Вход:</p>
-        <button onclick="showKeypadModal()">##.## (Бар)</button>
-    </div>
+<div class="textbox_inputs">
+    <input type="text" placeholder="Выход | ##.## Бар" onclick="showKeypadModal()"> | <input type="text" placeholder="Задание | ##.## Бар" onclick="showKeypadModal()"> | <input type="text" placeholder="Δ | ###.## Бар" onclick="showKeypadModal()"> <input type="text" placeholder="Частота | ##.# Гц" onclick="showKeypadModal()"> | <input type="text" placeholder="Вход | ##.## Бар" onclick="showKeypadModal()">
 </div>
     
 <hr>
@@ -224,27 +192,41 @@ input[type="text"] {
     height: 30px;
 }
 
-.main{
+
+
+
+.main {
     display: flex;
     flex-direction: column;
-    margin-bottom: 50px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 20px;
 }
+
+.main > div > button {
+    width: fit-content;
+    margin-bottom: 0px;
+    width: 150px;
+    height: 40px;
+    font-size: 14px;
+}
+
 .main >.text{
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     margin-bottom: 12px;
+    white-space: nowrap;
 }
-
-.main > .text > button{
-    height: 20px;
-}
-
 .userName{
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     margin-right: 5px;
+}
+
+.userName button{
+    margin-left: 10px;
 }
 
 
