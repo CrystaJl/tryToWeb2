@@ -10,10 +10,10 @@ function refreshTime() {
 setInterval(refreshTime, 1000);
 
 function mainPage(){
-  window.location.href = 'mainPage.html';
+  window.location.href = '/';
 }
 function index(){
-  window.location.href = 'index.html';
+  window.location.href = 'settings.html';
 }
 function contacts(){
   window.location.href = 'contacts.html';
