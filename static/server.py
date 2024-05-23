@@ -9,12 +9,12 @@ app = Flask(__name__, template_folder='../windows', static_folder='../static')
 run_with_ngrok(app)
 
 @app.route('/')
-def mainPage():
-    return render_template('mainPage.html')
-
-@app.route('/index.html')
 def index():
     return render_template('index.html')
+
+@app.route('/settings.html')
+def settings():
+    return render_template('settings.html')
 
 @app.route('/backup.html')
 def backup():

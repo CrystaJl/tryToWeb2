@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Система управления</title>
+    
+</head>
+<body>
+    <div class = "time">
+        <p id="time">...</p>
+    </div>
+    <div class="buttons">
+        <button onclick="mainPage()">Главный экран</button>
+        <button onclick="installationScheduler()">Планировщик установок</button>
+        <button onclick="monitoring()">Мониторинг</button>
+        <button onclick="journal()">Журнал</button>
+        <button onclick="stationSettings()">Настройки станции</button>
+        <button onclick="engineeringMenu()">Инженерное меню</button>
+        <button onclick="panelSettings()">Настройки панели</button>
+        <button onclick="contacts()">Контакты</button>
+    </div>
+
+    
+    <script src="{{ url_for('static',filename='scriptMain.js') }}"></script>
+    <style>
+        .buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* изменено */
+    align-items: flex-start; /* изменено */
+    margin-top: 20px;
+}
+
+.buttons > button {
+    width: fit-content; 
+    margin-bottom: 10px; 
+    width: 150px; /* изменено */
+    height: 40px; /* изменено */
+    font-size: 14px; /* изменено */
+    margin-bottom: 20px; /* увеличен отступ */
+
+}
+
+    </style>
+</body>
+</html>
