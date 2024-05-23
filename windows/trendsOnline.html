@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Тренды онлайн</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@1.2.0"></script>
     
 </head>
 <body>
@@ -47,6 +48,20 @@
 
     </script>
     <style>
+    
+    .pan-buttons {
+        margin-top: 10px;
+        }
+
+    .pan-button {
+        cursor: pointer;
+        margin-right: 10px;
+        padding: 5px 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background-color: #f9f9f9;
+        }
+
     .main {
         display: flex;
         flex-direction: column;
@@ -127,19 +142,25 @@ input[type="text"] {
 
     <div style="width: 650px;height: 25%;"><canvas id="myChart"></canvas></div>
 
+
+
     <script>
         fetch('static/data.json')
         .then(response => response.json())
         .then(data => {
-            // Use data to create chart
-            const labels = data[0].values.map((_, index) => `Label ${index + 1}`);
+            const labels = data.map((_, index) => `Label ${index + 1}`);
             const datasets = data.map(item => ({
                 data: item.values,
                 label: item.label,
-                backgroundColor: item.color,
+                borderColor: item.color,
+                backgroundColor: item.color + '33',
+                borderWidth: 1,
+                pointRadius: 2,
+                pointHoverRadius: 4,
             }));
-    
-            new Chart(document.getElementById('myChart'), {
+
+            const ctx = document.getElementById('myChart').getContext('2d');
+            const chart = new Chart(ctx, {
                 type: 'line',
                 data: {
                     labels,
@@ -148,45 +169,115 @@ input[type="text"] {
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
+                    elements: {
+                        line: {
+                            tension: 0.4,
+                        },
+                    },
+                    plugins: {
+                        legend: {
+                            display: true,
+                            labels: {
+                                font: {
+                                    size: 12,
+                                },
+                                usePointStyle: true,
+                                padding: 20,
+                            },
+                        },
+                        tooltip: {
+                            backgroundColor: '#fff',
+                            titleColor: '#000',
+                            bodyColor: '#000',
+                            borderColor: '#ccc',
+                            borderWidth: 1,
+                        },
+                        zoom: {
+                            pan: {
+                                enabled: true,
+                                mode: 'x',
+                            },
+                            zoom: {
+                                enabled: true,
+                                mode: 'x',
+                                rangeMin: {
+                                    x: null,
+                                },
+                                rangeMax: {
+                                    x: null,
+                                },
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: {
+                                display: false,
+                            },
+                            ticks: {
+                                font: {
+                                    size: 12,
+                                },
+                            },
+                        },
+                        y: {
+                            grid: {
+                                color: '#e0e0e0',
+                                lineWidth: 0.5,
+                            },
+                            ticks: {
+                                font: {
+                                    size: 12,
+                                },
+                                beginAtZero: true,
+                            },
+                        },
+                    },
                 },
             });
+
+            // Initial visible range
+            let startIndex = 0;
+            let endIndex = Math.min(10, labels.length);
+
+            chart.options.scales.x.min = startIndex;
+            chart.options.scales.x.max = endIndex;
+            chart.update();
+
+            // Add event listeners for panning buttons
+            document.getElementById('panLeftButton').addEventListener('click', function() {
+                panChart('left');
+            });
+
+            document.getElementById('panRightButton').addEventListener('click', function() {
+                panChart('right');
+            });
+
+            function panChart(direction) {
+                const visibleDuration = 10; // Number of visible points
+
+                if (direction === 'left') {
+                    startIndex = Math.max(startIndex - 1, 0);
+                    endIndex = Math.min(endIndex - 1, labels.length);
+                } else if (direction === 'right') {
+                    startIndex = Math.min(startIndex + 1, labels.length - visibleDuration);
+                    endIndex = Math.min(endIndex + 1, labels.length);
+                }
+
+                chart.options.scales.x.min = startIndex;
+                chart.options.scales.x.max = endIndex;
+                chart.update();
+            }
         });
     </script>
-<script>
-
-// const xValues = [100,200,300,400,500,600,700,800,900,1000];
-
-// new Chart("myChart", {
-//   type: "line",
-//   data: {
-//     labels: xValues,
-//     datasets: [{ 
-//       data: [86,114,106,106,107,111,133,221,783,247],
-//       borderColor: "red",
-//       fill: false
-//     }, { 
-//       data: [160,170,170,190,200,270,400,500,600,700],
-//       borderColor: "green",
-//       fill: false
-//     }, { 
-//       data: [30,70,200,500,600,400,200,100,20,10],
-//       borderColor: "blue",
-//       fill: false
-//     }]
-//   },
-//   options: {
-//     legend: {display: false}, maintainAspectRatio: false
-//   }
-// });
-</script>
 
 
-
+<div class="pan-buttons">
+    <button class="pan-button" id="panLeftButton">←</button>
+    <button class="pan-button" id="panRightButton">→</button>
+</div>
     <hr>
-    <div class="slider"> <!-- Пролистывание графика в виде слайдера вместо кнопок. Как мне показалось, так удобнее -->
-        <input type="range" min="0" max="200" value="100" step="20"> 
-    </div>
-    
+
     <div class="1row">
         <input type="text" placeholder="Уставка | ##.## Бар" onclick="showKeypadModal()"> | <input type="text" placeholder="ДД на входе | ##.## Бар" onclick="showKeypadModal()"> | <input type="text" placeholder="ДД на выходе | ##.## Бар" onclick="showKeypadModal()"> <input type="text" placeholder="Частота | ##.# Гц" onclick="showKeypadModal()"> | <input type="text" placeholder="Частота задание | ##.# Гц" onclick="showKeypadModal()"> | <input type="text" placeholder="Частота факт. | ##.# Гц" onclick="showKeypadModal()">
     </div>
