@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class = "time">
+        <p id="time">...</p>
+    </div>
+    <div class="main">
+        <button onclick="backMenu()">Назад</button>
+
+        <button onclick="pid()">Настройки ПИД-рег.</button>
+
+        <button onclick="backup()">Бэкап</button>
+
+
+    </div>
+
+
+    <script>
+        function backMenu(){
+            window.location.href = '{{ url_for("settings") }}';
+        }
+        function backup(){
+            window.location.href = '{{ url_for("backup") }}'
+        }
+        function pid(){
+            window.location.href = '{{ url_for("pid") }}'
+        }
+
+
+    </script>
+    <script src="{{ url_for('static',filename='scriptMain.js') }}"></script>
+    <script src="{{ url_for('static',filename='scriptKeypad.js') }}"></script>
+    <style>
+    .main {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start; /* изменено */
+        align-items: flex-start; /* изменено */
+        margin-top: 20px;
+    }
+    .main > button {
+        width: fit-content; 
+        margin-bottom: 10px; 
+        width: 150px; /* изменено */
+        height: 40px; /* изменено */
+        font-size: 14px; /* изменено */
+        margin-bottom: 20px; /* увеличен отступ */
+
+    }
+    </style>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Планировщик установок</title>
+</head>
+<body>
+    <div class = "time">
+        <p id="time">...</p>
+    </div>
+    <div class="main">
+        <button onclick="backMenu()">Назад</button>
+
+    </div>
+    <div>
+        Источник уставки
+    </div>
+    <hr>
+    <div>
+        Уставка пользователя
+    <div class="container">
+        <button onclick="showKeypadModal()">##.## (Бар)</button>
+    </div>
+    <hr>
+    <div>
+        Настройки дней недели
+    </div>
+    <div class="container">
+        <button>ПН</button>
+        <button>ВТ</button>
+        <button>СР</button>
+        <button>ЧТ</button>
+        <button>ПТ</button>
+        <button>СБ</button>
+        <button>ВС</button>
+      </div>
+    <hr>
+    <div>
+        <small>Планировщик</small><br>
+
+    <div class="container">
+        Время перехода: | Будни | Выходные | Уставка: Будни | Выходные<br>
+    <div style="margin-left:60px">  &nbsp;  &nbsp; &nbsp; Утро <button>##:##</button> &nbsp; &nbsp; <button>##:##</button> &nbsp; &nbsp; &nbsp; <button>##:## (Бар)</button> &nbsp; &nbsp; &nbsp; &nbsp; <button>##:## (Бар)</button></div>
+    <div style="margin-left:60px">  &nbsp;  &nbsp; &nbsp; День <button>##:##</button> &nbsp; &nbsp; <button>##:##</button> &nbsp; &nbsp; &nbsp; <button>##:## (Бар)</button> &nbsp; &nbsp; &nbsp; &nbsp; <button>##:## (Бар)</button></div>
+    <div style="margin-left:60px">  &nbsp; &nbsp; Вечер <button>##:##</button> &nbsp; &nbsp; <button>##:##</button> &nbsp; &nbsp; &nbsp; <button>##:## (Бар)</button> &nbsp; &nbsp; &nbsp; &nbsp; <button>##:## (Бар)</button></div>
+    <div style="margin-left:60px">  &nbsp;  &nbsp; &nbsp; Ночь <button>##:##</button> &nbsp; &nbsp; <button>##:##</button> &nbsp; &nbsp; &nbsp; <button>##:## (Бар)</button> &nbsp; &nbsp; &nbsp; &nbsp; <button>##:## (Бар)</button></div>
+    </div>
+    <hr>
+    <!-- <p id="getDay"></p> -->
+    <div>Текущий день <!-- Здесь добавить функцию, которая под комментом в scriptMain.js --> | Тип дня | Останов </div><br>
+    <div>Тип уставки | Ночь | Текущая уставка | ##.## | Бар </div>
+
+
+    <div class="keypad-modal" id="keypadModal">
+        <div class="keypad-content">
+            <input type="text" size="40" id="textbox" disabled="disabled">
+            <div class="keypad">
+                <button onclick="addNumber(7)">7</button>
+                <button onclick="addNumber(8)">8</button>
+                <button onclick="addNumber(9)">9</button>
+                <button onclick="clearInput()">C</button>
+                <button onclick="addNumber(4)">4</button>
+                <button onclick="addNumber(5)">5</button>
+                <button onclick="addNumber(6)">6</button>
+                <button onclick="deleteNumber()">&#8592</button>
+                <button onclick="addNumber(1)">1</button>
+                <button onclick="addNumber(2)">2</button>
+                <button onclick="addNumber(3)">3</button>
+                <button onclick="closeKeypad()">esc</button>
+                <button onclick="addNumber(',')">,</button>
+                <button onclick="addNumber(0)">0</button>
+                <button onclick="submitInput()">Enter</button>
+                
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static',filename='scriptMain.js') }}"></script>
+    <script src="{{ url_for('static',filename='scriptKeypad.js') }}"></script>
+    <script>
+
+        function backMenu(){
+            window.location.href = '{{ url_for("settings") }}';
+        }
+
+    </script>
+        <style>
+    .main {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start; 
+        align-items: flex-start; 
+        margin-top: 20px;
+    }
+    .main > button {
+        width: fit-content; 
+        margin-bottom: 10px; 
+        width: 150px; 
+        height: 40px; 
+        font-size: 14px; 
+        margin-bottom: 20px; 
+
+    }
+
+
+
+
+    .keypad-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.keypad-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+   
+}
+
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-gap: 5px;
+    justify-content: center;
+    align-items: center;
+}
+
+.keypad > button {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input[type="text"] {
+    width: 200px;
+    height: 20px;
+    margin: 2%;
+}
+    </style>
+</body>
+</html>

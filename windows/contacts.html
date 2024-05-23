@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class = "time">
+        <p id="time">...</p>
+    </div>
+    <div class="main">
+        <div>
+            <p>Программное обеспечение</p>
+            <p id="specifications"></p>
+        </div>
+        <div>
+            <p>Версия EasyBuilder</p>
+            <p>LW-9120(32bit)</p>
+        </div>
+        <div>
+            <p>Дата компиляции</p>
+            <p id="getDate"></p>
+        </div>
+        <div>
+            <p>Код продукта</p>
+            <p>...</p>
+            <p>...</p>
+            <p>...</p>
+        </div>
+        <div>
+            <p>Количество насосов</p>
+            <p>...</p>
+            <p>из них работают</p>
+            <p>...</p>
+        </div>
+        <div>
+            <p>Почта</p>
+            <p>Info@mfmc.ru</p>
+        </div>
+        <div>
+            <p>Вэб-сайт</p>
+            <p>www.mfmc.ru</p>
+        </div>
+        <div>
+            <p>Техническая поддержка</p>
+            <p>+7(495) 122-22-62</p>
+            <p>+7(800) 333-14-61</p>
+        </div>
+        <div>
+            <button onclick="backMenu()">Назад</button>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static',filename='scriptMain.js') }}"></script>
+
+    <style>
+        .main > div{
+            display: flex;
+            flex-direction: row;
+        }
+         p{
+            padding-right: 20px;
+        }
+    </style>
+    <script>
+        function backMenu(){
+            window.location.href = '{{ url_for("settings") }}';
+        }
+    </script>
+</body>
+</html>
