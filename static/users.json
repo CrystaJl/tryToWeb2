@@ -1,0 +1,26 @@
+{
+    "guest":{
+        "role": "guest", "level": "0", "password": ""
+    },
+
+    "god":{
+        "role": "god", "level": "5", "password": "5555"
+    },
+
+    "user1":{
+        "role": "user1", "level": "1", "password": "1111"
+    },
+
+    "user2":{
+        "role": "user2", "level": "2", "password": "2222"
+    },
+
+    "user3":{
+        "role": "user3", "level": "3", "password": "3333"
+    },
+
+    "user4":{
+        "role": "user4", "level": "4", "password": "4444"
+    }
+
+}

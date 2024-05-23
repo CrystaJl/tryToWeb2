@@ -2,6 +2,7 @@ from flask import Flask, render_template, send_from_directory, redirect, request
 from flask_ngrok import run_with_ngrok
 import os
 import webbrowser
+import json
 
 
 
@@ -73,6 +74,12 @@ def criptKeypad(filename):
 
 @app.route('/scriptMain.js/<filename>')
 def scriptMain(filename):
+    root_dir = os.path.dirname(os.path.abspath(__file__))
+    return send_from_directory(os.path.join(root_dir, 'static'), filename)
+
+
+@app.route('/usersJs.js/<filename>')
+def usersJs(filename):
     root_dir = os.path.dirname(os.path.abspath(__file__))
     return send_from_directory(os.path.join(root_dir, 'static'), filename)
 
