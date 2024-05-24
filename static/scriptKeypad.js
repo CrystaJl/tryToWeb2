@@ -3,6 +3,7 @@ var textBox = document.getElementById('textbox')
 var checkBox;
 
 function showKeypadModal() {
+    var currentUser = document.getElementById('user')
     checkBox = document.activeElement;
     document.getElementById('keypadModal').style.display = 'block';
 }
