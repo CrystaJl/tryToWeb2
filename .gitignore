@@ -1,3 +1,2 @@
-static/__pycache__/dataRandomizer.cpython-312.pyc
-static/users.json
-static/data.json
+static\users.json
+static\data.json
