@@ -14,7 +14,7 @@
         <button onclick="backMenu()">Настройки</button>
     </div>
     <div class="userName">
-        <p>Current user: <span id="user">guest </span></p>
+        <p>Current user: <span id="user">{{ current_user }}</span></p>
         <button onclick="resetUser()">Reset User</button>
     </div>
 
@@ -99,12 +99,11 @@
             <option value="Guest">Guest</option>
             <option value="God">God</option>
             <option value="User1">User1</option>
-            <option value="User3">User2</option>
+            <option value="User2">User2</option>
             <option value="User3">User3</option>
             <option value="User4">User4</option>
         </select>
-
-        <input type="text" size="40" id="textbox" disabled="disabled">
+        <input type="text" size="40" id="password" disabled="disabled">
         <div class="keypad">
             <button onclick="addNumber(7)">7</button>
             <button onclick="addNumber(8)">8</button>
@@ -120,8 +119,7 @@
             <button onclick="closeKeypad()">esc</button>
             <button onclick="addNumber(',')">,</button>
             <button onclick="addNumber(0)">0</button>
-            <button onclick="submitInput()">Enter</button>
-            
+            <button onclick="submitLogin()">Enter</button>
         </div>
     </div>
 </div>
@@ -134,7 +132,6 @@
         <div class="mxValue">
             <p>max:</p><label id="maxValue"></label>
         </div>
-
         <input type="text" size="40" id="textbox" disabled="disabled">
         <div class="keypad">
             <button onclick="addNumber(7)">7</button>
@@ -152,10 +149,10 @@
             <button onclick="addNumber(',')">,</button>
             <button onclick="addNumber(0)">0</button>
             <button onclick="submitInput()">Enter</button>
-            
         </div>
     </div>
 </div>
+
     
     <script src="{{ url_for('static',filename='scriptMain.js') }}"></script>
     <script src="{{ url_for('static',filename='scriptKeypad.js') }}"></script>
