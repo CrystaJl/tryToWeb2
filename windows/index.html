@@ -18,6 +18,40 @@
         <button onclick="resetUser()">Reset User</button>
     </div>
 
+    <div style="width: 650px; height: 25%;">
+        <canvas id="myChart"></canvas>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>  <!-- Include Chart.js library -->
+    <script>
+        fetch('static/data.json')  // Fetch the JSON data file
+        .then(response => response.json())  // Parse the JSON data
+        .then(data => {
+            // Extract labels for the x-axis (e.g., "Label 1", "Label 2", ...)
+            const labels = data[0].values.map((_, index) => `Label ${index + 1}`);
+            
+            // Map data to the format required by Chart.js
+            const datasets = data.map(item => ({
+                data: item.values,  // The values for the dataset
+                label: item.label,  // The label for the dataset
+                backgroundColor: item.color,  // The color for the dataset
+            }));
+    
+            // Create the chart
+            new Chart(document.getElementById('myChart'), {
+                type: 'line',  // Line chart
+                data: {
+                    labels,
+                    datasets,
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                },
+            });
+        });
+    </script>
+    
     <div class="textbox_inputs">
         <input type="text" placeholder="Выход | ##.## Бар" onclick="showKeypadModal()"> 
         <input type="text" placeholder="Задание | ##.## Бар" onclick="showKeypadModal()"> 

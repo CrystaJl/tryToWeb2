@@ -119,18 +119,45 @@ input[type="text"] {
     </div>
     <hr>
 
-    <div class="container">
-        1 минут | 3 минут | 10 минут | 30 минут |<br>
+    <div style="width: 650px; height: 25%;">
+        <canvas id="myChart"></canvas>
     </div>
-    <hr>
-    <div class="blankimage">
-        <img src="data:," alt> <!-- Сюда вставить график -->
-        <p>/////</p>
-    </div>
-    <hr>
-    <div class="slider"> <!-- Пролистывание графика в виде слайдера вместо кнопок. Как мне показалось, так удобнее -->
-        <input type="range" min="0" max="200" value="100"> 
-    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>  <!-- Include Chart.js library -->
+    <script>
+        fetch('static/data.json')  // Fetch the JSON data file
+        .then(response => response.json())  // Parse the JSON data
+        .then(data => {
+            // Extract labels for the x-axis (e.g., "Label 1", "Label 2", ...)
+            const labels = data[0].values.map((_, index) => `Label ${index + 1}`);
+            
+            // Map data to the format required by Chart.js
+            const datasets = data.map(item => ({
+                data: item.values,  // The values for the dataset
+                label: item.label,  // The label for the dataset
+                backgroundColor: item.color,  // The color for the dataset
+            }));
+    
+            // Create the chart
+            new Chart(document.getElementById('myChart'), {
+                type: 'line',  // Line chart
+                data: {
+                    labels,
+                    datasets,
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                },
+            });
+        });
+    </script>
+
+
+<div class="pan-buttons">
+    <button class="pan-button" id="panLeftButton">←</button>
+    <button class="pan-button" id="panRightButton">→</button>
+</div>
     
     <div class="1row">
         <input type="text" placeholder="Уставка | ##.## Бар" onclick="showKeypadModal()"> | <input type="text" placeholder="ДД на входе | ##.## Бар" onclick="showKeypadModal()"> | <input type="text" placeholder="ДД на выходе | ##.## Бар" onclick="showKeypadModal()"> <input type="text" placeholder="Частота | ##.# Гц" onclick="showKeypadModal()"> | <input type="text" placeholder="Частота задание | ##.# Гц" onclick="showKeypadModal()"> | <input type="text" placeholder="Частота факт. | ##.# Гц" onclick="showKeypadModal()">

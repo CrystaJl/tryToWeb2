@@ -36,6 +36,27 @@ function stationSettings(){
 function panelSettings(){
   window.location.href = 'panelSettings.html'
 }
+function stSet_EmergencyMode(){
+  window.location.href = 'stSet_EmergencyMode.html'
+}
+function stSet_EngineParameters(){
+  window.location.href = 'stSet_EngineParameters.html'
+}
+function stSet_Options(){
+  window.location.href = 'stSet_Options.html'
+}
+function stSet_PumpSettings(){
+  window.location.href = 'stSet_PumpSettings.html'
+}
+function stSet_PumpAdd(){
+  window.location.href = 'stSet_PumpAdd.html'
+}
+function stSet_PumpRemove(){
+  window.location.href = 'stSet_PumpRemove.html'
+}
+function stSet_SensorSettings(){
+  window.location.href = 'stSet_SensorSettings.html'
+}
 function specifications(){
   getSpecifications = document.getElementById('specifications')
   getSpecifications.innerHTML = navigator.platform;

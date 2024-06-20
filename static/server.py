@@ -65,6 +65,35 @@ def stationSettings():
 def trendsOnline():
     return render_template('trendsOnline.html')
 
+# Настройки станции
+
+@app.route('/stSet_EmergencyMode.html')
+def stSet_EmergencyMode():
+    return render_template('stSet_EmergencyMode.html')
+
+@app.route('/stSet_EngineParameters.html')
+def stSet_EngineParameters():
+    return render_template('stSet_EngineParameters.html')
+
+@app.route('/stSet_Options.html')
+def stSet_Options():
+    return render_template('stSet_Options.html')
+
+@app.route('/stSet_PumpSettings.html')
+def stSet_PumpSettings():
+    return render_template('stSet_PumpSettings.html')
+
+@app.route('/stSet_SensorSettings.html')
+def stSet_SensorSettings():
+    return render_template('stSet_SensorSettings.html')
+
+@app.route('/stSet_PumpAdd.html')
+def stSet_PumpAdd():
+    return render_template('stSet_PumpAdd.html')
+
+@app.route('/stSet_PumpRemove.html')
+def stSet_PumpRemove():
+    return render_template('stSet_PumpRemove.html')
 
 @app.route('/scriptKeypad.js/<filename>')
 def criptKeypad(filename):
@@ -83,7 +112,13 @@ def usersJs(filename):
     root_dir = os.path.dirname(os.path.abspath(__file__))
     return send_from_directory(os.path.join(root_dir, 'static'), filename)
 
+@app.route('/dataRandomizer.py')
+def randomizer(filename):
+    root_dir = os.path.dirname(os.path.abspath(__file__))
+    return send_from_directory(os.path.join(root_dir, 'static'), filename)
 
+# рандомайзер графика
+os.system("python dataRandomizer.py")
 
 if __name__ == "__main__":
     webbrowser.open_new('http://127.0.0.1:5000/')

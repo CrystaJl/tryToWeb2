@@ -3,43 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Система управления</title>
+    
 </head>
 <body>
     <div class = "time">
         <p id="time">...</p>
     </div>
-    <div class="main">
-        <button onclick="backMenu()">Назад</button>
-
+    <div class="buttons">
+        <button onclick="mainPage()">Главный экран</button>
+        <button onclick="stSet_EngineParameters()">Параметры двигателей</button>
+        <button onclick="stSet_SensorSettings()">Настройка датчиков</button>
+        <button onclick="stSet_PumpSettings()">Настройка насосов</button>
+        <button onclick="stSet_PumpAdd()">Добавить насосы</button>
+        <button onclick="stSet_PumpRemove()">Убрать насосы</button>
+        <button onclick="stSet_Options()">Опции</button>
+        <button onclick="stSet_EmergencyMode()">Аварийный режим</button>
     </div>
 
-
-
-
+    
     <script src="{{ url_for('static',filename='scriptMain.js') }}"></script>
-    <script>
-        function backMenu(){
-            window.location.href = '{{ url_for("settings") }}';
-        }
-    </script>
-        <style>
-            .main {
-                display: flex;
-                flex-direction: column;
-                justify-content: flex-start; 
-                align-items: flex-start; 
-                margin-top: 20px;
-            }
-            .main > button {
-                width: fit-content; 
-                margin-bottom: 10px; 
-                width: 150px; 
-                height: 40px; 
-                font-size: 14px; 
-                margin-bottom: 20px; 
-        
-            }
-            </style>
+    <style>
+        .buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* изменено */
+    align-items: flex-start; /* изменено */
+    margin-top: 7px;
+}
+
+.buttons > button {
+    width: fit-content; 
+    margin-bottom: 7px; 
+    width: 200px; /* изменено */
+    height: 20px; /* изменено */
+    font-size: 14px; /* изменено */
+    margin-bottom: 7px; /* увеличен отступ */
+
+}
+
+    </style>
 </body>
 </html>
