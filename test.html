@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="keyboard()">открыть</button>
+
+    <script>
+        function keyboard() {
+            fetch('keyboard1.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('keypadContainer').innerHTML = data;
+                    document.getElementById('keypadModal').style.display = 'block';
+                })
+                .catch(error => console.error('Error loading keypad:', error));
+        }
+    </script>
+</body>
+</html>
